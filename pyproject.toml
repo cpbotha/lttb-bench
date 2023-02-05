@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "lttb-bench"
+version = "0.1.0"
+description = ""
+authors = ["Charl P. Botha <cpbotha@vxlabs.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+lttb = "^0.3.1"
+lttbc = "^0.2.1"
+pylttb = "^0.1.9"
+pandas = "^1.5.1"
+matplotlib = "^3.6.2"
+cython = {version = "^3.0.0a11", allow-prereleases = true}
+line-profiler = "^4.0.2"
+
+[tool.poetry.dev-dependencies]
+jupyter = "^1.0.0"
+
+[build-system]
+# additional reqs due cython, see
+# https://cython.readthedocs.io/en/latest/src/userguide/source_files_and_compilation.html#basic-setup-py
+requires = ["poetry-core>=1.0.0", "setuptools", "wheel", "Cython"]
+build-backend = "poetry.core.masonry.api"
