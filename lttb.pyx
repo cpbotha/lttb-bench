@@ -80,10 +80,10 @@ def downsample(double[::1] x, double[::1] y, int threshold = 250):
     for i in range(threshold - 2):
         avg_x = 0
         avg_y = 0
-        avg_range_start = <Py_ssize_t>floor((i + 1) * every) + 1
-        avg_range_end = <Py_ssize_t>floor((i + 2) * every) + 1
+        avg_range_start = <Py_ssize_t>(floor((i + 1) * every) + 1)
+        avg_range_end = <Py_ssize_t>(floor((i + 2) * every) + 1)
 
-        if avg_range_end >= threshold:
+        if avg_range_end >= inp_len:
             avg_range_end = inp_len
 
         avg_range_length = avg_range_end - avg_range_start
@@ -98,8 +98,9 @@ def downsample(double[::1] x, double[::1] y, int threshold = 250):
         avg_x /= avg_range_length
         avg_y /= avg_range_length
 
-        range_offs = <Py_ssize_t>floor((i + 0) * every) + 1;
-        range_to = <Py_ssize_t>floor((i + 1) * every) + 1;
+        # Get the range for this bucket
+        range_offs = <Py_ssize_t>(floor((i + 0) * every) + 1)
+        range_to = <Py_ssize_t>(floor((i + 1) * every) + 1)
 
         max_area = -1.0
         # bringing out these temp variables for fewer lookups in the area = fabs(...) made almost no diff
