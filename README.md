@@ -1,8 +1,8 @@
 # lttb-bench
 
-Started as speed comparison of different lttb implementations.
+Started as speed comparison of different [lttb](https://github.com/sveinn-steinarsson/flot-downsample) implementations for Python.
 
-Morphed into attempt at cython implementation which is faster than the two python versions, but still way slower than the plain C.
+Morphed into attempt at cython implementation which seems to work and is faster than the two python versions, but still way slower than the plain C.
 
 ARGH.
 
