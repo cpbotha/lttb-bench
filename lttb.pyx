@@ -25,7 +25,7 @@ dtype = np.double
 # disable divide-by-zero checks (only needed at one point) -- does not make a big difference
 @cython.cdivision(True)
 #@cython.profile(True)
-def cy_lttb(double[::1] x, double[::1] y, int threshold = 250):
+def downsample(double[::1] x, double[::1] y, int threshold = 250):
     cdef Py_ssize_t inp_len = x.shape[0]
 
     # else:
