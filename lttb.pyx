@@ -1,7 +1,10 @@
 # to build: python setup.py build_ext --inplace
 
+# use the following magic if you want to try the non-working line profiling
+#%%cython -a -f --compile-args=-DCYTHON_TRACE=1
+
 # ARLGH 370us vs 10us for the native version
-# next stop: pyx file please
+# - pyx file with setup.py made no difference
 
 # http://docs.cython.org/en/latest/src/userguide/memoryviews.html
 
@@ -21,9 +24,8 @@ dtype = np.double
 @cython.wraparound(False)
 # disable divide-by-zero checks (only needed at one point) -- does not make a big difference
 @cython.cdivision(True)
-@cython.profile(True)
-@cython.linetrace(True)
-def downsample(double[::1] x, double[::1] y, int threshold = 250):
+#@cython.profile(True)
+def cy_lttb(double[::1] x, double[::1] y, int threshold = 250):
     cdef Py_ssize_t inp_len = x.shape[0]
 
     # else:
@@ -47,7 +49,7 @@ def downsample(double[::1] x, double[::1] y, int threshold = 250):
     #array.resize(_y_out, threshold)
     cdef double[::1] y_out = _y_out
 
-    cdef Py_ssize_t out_idx = 0;
+    cdef Py_ssize_t out_idx = 0
     # should be const
     cdef double every = (inp_len - 2) / float(threshold - 2)
 
@@ -121,7 +123,6 @@ def downsample(double[::1] x, double[::1] y, int threshold = 250):
             range_offs += 1
 
         # the point that gave us max area is the one that is picked from this bucket
-        # replace max_area_point_* with <float>i and see timeit reporting < 5ns
         x_out[out_idx] = max_area_point_x
         y_out[out_idx] = max_area_point_y
 
