@@ -1,5 +1,6 @@
 # cython: language_level=3
 
+# ported from C https://github.com/dgoeries/lttbc/ to Cython by Charl P. Botha
 # to build: python setup.py build_ext --inplace
 
 import numpy as np
