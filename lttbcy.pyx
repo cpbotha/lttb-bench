@@ -1,12 +1,6 @@
+# cython: language_level=3
+
 # to build: python setup.py build_ext --inplace
-
-# use the following magic if you want to try the non-working line profiling
-#%%cython -a -f --compile-args=-DCYTHON_TRACE=1
-
-# ARLGH 370us vs 10us for the native version
-# - pyx file with setup.py made no difference
-
-# http://docs.cython.org/en/latest/src/userguide/memoryviews.html
 
 import numpy as np
 import cython
@@ -19,6 +13,7 @@ dtype = np.double
 #ctypedef fused double:
 #    double
 
+# http://docs.cython.org/en/latest/src/userguide/memoryviews.html
 # https://stackoverflow.com/questions/19537673/slow-division-in-cython
 @cython.boundscheck(False)
 @cython.wraparound(False)
