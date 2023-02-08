@@ -3,6 +3,10 @@
 Translated for Pythran from https://git.sr.ht/~javiljoen/lttb-numpy
 which is Copyright (c) 2020, JA Viljoen, MIT license.
 
+To compile:
+
+  pythran -DUSE_XSIMD -fopenmp -march=native lttb_pt.py
+
 Reference
 ---------
 Sveinn Steinarsson. 2013. Downsampling Time Series for Visual
