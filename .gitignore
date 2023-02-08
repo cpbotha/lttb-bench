@@ -1,0 +1,9 @@
+*~
+.ipynb_checkpoints
+Profile.prof
+__pycache__
+build
+*.so
+lttbcy.cpp
+lttbcy.c
+
