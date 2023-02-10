@@ -3,10 +3,6 @@
 Translated for Pythran from https://git.sr.ht/~javiljoen/lttb-numpy
 which is Copyright (c) 2020, JA Viljoen, MIT license.
 
-To compile:
-
-  pythran -DUSE_XSIMD -fopenmp -march=native lttb_pt.py
-
 Reference
 ---------
 Sveinn Steinarsson. 2013. Downsampling Time Series for Visual
@@ -42,7 +38,9 @@ def downsample(data, n_out):
     # First and last points are the same as in the input.
     out = np.zeros((n_out, 2))
     out[0] = data[0]
-    out[len(out) - 1] = data[len(data) - 1]
+    out[-1] = data[-1]
+
+    c = np.empty(2)
 
     # Largest Triangle Three Buckets (LTTB):
     # In each bin, find the point that makes the largest triangle
@@ -54,14 +52,13 @@ def downsample(data, n_out):
         if i < n_bins - 1:
             next_bin = data_bins[i + 1]
         else:
-            next_bin = data[len(data) - 1 :]
+            next_bin = data[-1:]
 
         a = out[i]
         bs = this_bin
-        c = next_bin.mean(axis=0)
+        next_bin.mean(axis=0, out=c)
 
         areas = _areas_of_triangles(a, bs, c)
-
         out[i + 1] = bs[np.argmax(areas)]
 
     return out
