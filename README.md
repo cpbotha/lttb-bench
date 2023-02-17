@@ -19,3 +19,11 @@ To get cython 3 installed, I had to:
 ```shell
 poetry add --allow-prereleases cython@latest
 ```
+
+## Pythran module compilation
+
+The Pythran module `lttb_pt` is compiled with:
+
+```shell
+pythran lttb_pt.py
+```

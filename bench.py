@@ -1,4 +1,5 @@
 from timeit import timeit
+import sys
 
 import lttbc
 import lttb
@@ -7,10 +8,19 @@ import pylttb
 import pyximport
 pyximport.install()
 import lttbcy
-import lttb_pt
 
 import pandas as pd
 import numpy as np
+
+import lttb_pt
+
+# Compile Pythran code, if necessary
+if not hasattr(lttb_pt, '__pythran__'):
+    print('Please compile `lttb_pt.py` using:')
+    print()
+    print('  pythran lttb_pt.py')
+    print()
+    sys.exit(1)
 
 
 N = 100
