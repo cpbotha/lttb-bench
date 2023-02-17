@@ -51,10 +51,10 @@ clock(
     ["import lttbc"]
 )
 
-# clock(
-#     "lttbc-numpy",
-#     "lttb.downsample(tseries, n_out=THRESHOLD, validators=[])"
-# )
+clock(
+    "lttbc-numpy",
+    "lttb.downsample(tseries, n_out=THRESHOLD, validators=[])"
+)
 
 # clock(
 #     "pylttb",
