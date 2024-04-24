@@ -25,5 +25,5 @@ poetry add --allow-prereleases cython@latest
 The Pythran module `lttb_pt` is compiled with:
 
 ```shell
-pythran lttb_pt.py
+poetry run pythran lttb_pt.py
 ```
