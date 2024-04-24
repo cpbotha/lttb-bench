@@ -5,7 +5,7 @@ description = ""
 authors = ["Charl P. Botha <cpbotha@vxlabs.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.11"
 lttb = "^0.3.1"
 lttbc = "^0.2.1"
 pylttb = "^0.1.9"
@@ -13,6 +13,7 @@ pandas = "^1.5.1"
 matplotlib = "^3.6.2"
 cython = {version = "^3.0.0a11", allow-prereleases = true}
 line-profiler = "^4.0.2"
+pythran = "^0.15.0"
 
 [tool.poetry.dev-dependencies]
 jupyter = "^1.0.0"
