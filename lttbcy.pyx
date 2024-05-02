@@ -1,3 +1,6 @@
+# Cython implementation of LTTB
+# copyright Charl P. Botha 2024, licensed under 3-Clause BSD License
+
 # cython: language_level=3
 
 # ported from C https://github.com/dgoeries/lttbc/ to Cython by Charl P. Botha
